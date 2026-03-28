@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://stroiubivai.ucoz.net/index.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>СТРОЙ УБИВАЙ</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #0f2b47 0%, #1a3c5e 40%, #0d4a4a 100%);
+                color: #e0f7ff;
+                font-family: 'Segoe UI', system-ui, sans-serif;
+                overflow-x: hidden;
+                position: relative;
+            }
+
+            /* Частицы */
+            .particles {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: -1;
+                overflow: hidden;
+            }
+
+            .particle {
+                position: absolute;
+                bottom: -40px;
+                left: var(--left);
+                width: var(--size);
+                height: var(--size);
+                background: radial-gradient(circle at 30% 30%, rgba(103,232,249,1), rgba(16,185,129,0.7) 50%, transparent 90%);
+                border-radius: 50%;
+                box-shadow: 0 0 25px rgba(103,232,249,0.9), 0 0 45px rgba(103,232,249,0.7), 0 0 70px rgba(16,185,129,0.5);
+                opacity: 0;
+                animation: rise var(--duration) linear forwards;
+                animation-delay: var(--delay);
+            }
+
+            @keyframes rise {
+                0% {
+                    transform: translateY(0) scale(0.5);
+                    opacity: 0;
+                }
+
+                6% {
+                    opacity: 1;
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                92% {
+                    opacity: 0.3;
+                }
+
+                100% {
+                    transform: translateY(-110vh) scale(0.3);
+                    opacity: 0;
+                }
+            }
+
+            .container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 3.5vh 3vw 5vh;
+                gap: 4vh;
+                position: relative;
+                z-index: 1;
+            }
+
+            .title-outer {
+                width: 100%;
+                max-width: 98vw;
+                text-align: center;
+                padding: 1.5vh 0 0.5vh;
+            }
+
+            .main-title {
+                font-size: clamp(3rem, 9vw, 10.5rem);
+                font-weight: 900;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                display: inline-block;
+                background: linear-gradient(90deg, #a5f3fc, #67e8f9, #a5f3fc, #7dd3fc);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-size: 300% 100%;
+                animation: shine 10s linear infinite;
+                text-shadow: 0 0 15px rgba(103, 232, 249, 0.8), 0 0 35px rgba(103, 232, 249, 0.5);
+                filter: drop-shadow(0 5px 18px rgba(16, 185, 129, 0.6));
+                user-select: none;
+                white-space: nowrap;
+            }
+
+            @keyframes shine {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                color: #67e8f9;
+                text-align: center;
+                margin: 1.2rem 0 0.8rem 0;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                opacity: 0.85;
+            }
+
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
+                max-width: 1100px;
+                width: 96vw;
+            }
+
+            .fake-btn {
+                width: 245px;
+                height: 4.4rem;
+                padding: 0.5rem 0.9rem;
+                font-size: clamp(0.9rem, 3vw, 1.08rem);
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                color: #e0f7ff;
+                background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(103, 232, 249, 0.12));
+                border: 2px solid rgba(16, 185, 129, 0.6);
+                border-radius: 12px;
+                box-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
+                backdrop-filter: blur(8px);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.3rem;
+                animation: borderPulse 6s ease-in-out infinite;
+            }
+
+            @keyframes borderPulse {
+                0%, 100% {
+                    border-color: rgba(16, 185, 129, 0.6);
+                }
+
+                50% {
+                    border-color: rgba(103, 232, 249, 0.9);
+                }
+            }
+
+            .fake-btn:hover {
+                transform: translateY(-5px) scale(1.03);
+                background: linear-gradient(135deg, rgba(16, 185, 129, 0.32), rgba(103, 232, 249, 0.22));
+                border-color: #67e8f9;
+                box-shadow: 0 0 40px rgba(103, 232, 249, 0.75);
+            }
+
+            .btn-icon {
+                width: 2.05em;
+                height: 2.05em;
+                flex-shrink: 0;
+                transition: all 0.3s ease;
+            }
+
+            .fake-btn:hover .btn-icon {
+                filter: brightness(1.45) drop-shadow(0 0 10px #67e8f9);
+                transform: scale(1.12);
+            }
+
+            .link-btn {
+                text-decoration: none;
+                color: inherit;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+
+            /* Разделитель */
+            .separator {
+                width: 100%;
+                max-width: 580px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #67e8f9, transparent);
+                box-shadow: 0 0 16px rgba(103, 232, 249, 0.6);
+                margin: 1.6rem 0 1.8rem 0;
+                position: relative;
+            }
+
+                .separator::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 12px;
+                    height: 12px;
+                    background: #67e8f9;
+                    border-radius: 50%;
+                    box-shadow: 0 0 20px #67e8f9;
+                }
+
+            /* Мобильная адаптация */
+            @media (max-width: 768px) {
+                .fake-btn {
+                    width: 48%;
+                    height: 4.3rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .buttons {
+                    gap: 1rem 1.2rem;
+                }
+
+                .fake-btn {
+                    width: 100%;
+                    height: 4.2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="particles" id="particles"><div class="particle" style="--size: 13.555213720167384px; --left: 7.872659401444992%; --duration: 34.46172792788527s; --delay: -30.625751942924662s;"></div><div class="particle" style="--size: 6.947152863696835px; --left: 30.82438870969243%; --duration: 35.83212542482046s; --delay: -4.700086468358461s;"></div><div class="particle" style="--size: 12.00305570885336px; --left: 39.503118085099906%; --duration: 26.967713372337755s; --delay: -25.860764807218924s;"></div><div class="particle" style="--size: 9.101920075133206px; --left: 66.10099358790598%; --duration: 28.29317270723343s; --delay: -10.505927724332999s;"></div><div class="particle" style="--size: 6.382461028540759px; --left: 59.75631383407703%; --duration: 35.0940488159617s; --delay: -11.282843771543204s;"></div><div class="particle" style="--size: 8.598695796943279px; --left: 13.620485466568777%; --duration: 30.46449124777582s; --delay: -5.6989149827730605s;"></div><div class="particle" style="--size: 13.986130204280698px; --left: 30.667561334740267%; --duration: 31.290765587236724s; --delay: -28.052423102450312s;"></div><div class="particle" style="--size: 9.61569065625413px; --left: 62.44082514623359%; --duration: 25.5456730017806s; --delay: -24.006943898606277s;"></div><div class="particle" style="--size: 13.090721802759793px; --left: 92.76598669372935%; --duration: 34.19957705562042s; --delay: -8.9155838217438s;"></div><div class="particle" style="--size: 8.984380674871707px; --left: 95.50399665116235%; --duration: 22.773026579329596s; --delay: -7.634337120737585s;"></div><div class="particle" style="--size: 8.35586683587685px; --left: 17.16558661454335%; --duration: 17.60599771886971s; --delay: -7.479877508550743s;"></div></div>
+
+        <div class="container">
+            <div class="title-outer">
+                <h1 class="main-title">СТРОЙ/УБИВАЙ</h1>
+            </div>
+
+            <!-- Основное -->
+            <h2 class="section-title">Основное</h2>
+
+            <div class="buttons">
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/information.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12" stroke="#67e8f9" stroke-width="2" stroke-linecap="round"></line>
+                            <circle cx="12" cy="8" r="1" fill="#67e8f9"></circle>
+                        </svg>
+                        ИНФОРМАЦИЯ
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/kontakts.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M6 19C6 15.6863 8.68629 13 12 13C15.3137 13 18 15.6863 18 19" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        КОНТАКТЫ
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="steam://connect/79.137.192.234:27015" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="8,5 8,19 19,12" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polygon>
+                        </svg>
+                        ПОДКЛЮЧИТЬСЯ
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://discord.gg/RdZnMWxRuR" class="link-btn" target="_blank" rel="noopener noreferrer">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7 16.5c3.5 1 6.5 1 10 0" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        НАШ ДИСКОРД
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/rules.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2H6C4.89543 2 4 2.89543 4 4Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M14 2V8H20" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 13H15" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 17H15" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ПРАВИЛА СЕРВЕРА
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3376916836" class="link-btn" target="_blank" rel="noopener noreferrer">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20V20H4V4Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 8H16" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 12H16" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 16H12" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        КОНТЕНТ СЕРВЕРА
+                    </a>
+                </div>
+            </div>
+
+            <!-- Разделитель -->
+            <div class="separator"></div>
+
+            <!-- Команды и настройки -->
+            <h2 class="section-title">Команды и настройки</h2>
+
+            <div class="buttons">
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/build.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 12L9 18L19 8L13 2Z" stroke="#67e8f9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 17L6 19" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M16 9L14 11" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ПЕРЕЙТИ В БИЛД
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/pvp.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8 2 4 6 4 12C4 18 12 22 12 22C12 22 20 18 20 12C20 6 16 2 12 2Z" stroke="#67e8f9" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 7V17" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 10H16" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ПЕРЕЙТИ В ПВП
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/ps_shop.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 19C9.55228 19 10 18.5523 10 18C10 17.4477 9.55228 17 9 17C8.44772 17 8 17.4477 8 18C8 18.5523 8.44772 19 9 19Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M18 19C18.5523 19 19 18.5523 19 18C19 17.4477 18.5523 17 18 17C17.4477 17 17 17.4477 17 18C17 18.5523 17.4477 19 18 19Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M3 3H5L7 17H19L21 7H7" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ПОИНТШОП
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/menuon.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19.43 12.98C19.47 12.67 19.5 12.34 19.5 12C19.5 11.66 19.47 11.33 19.43 11.02L21.54 9.37C21.73 9.22 21.78 8.95 21.66 8.73L19.66 5.27C19.54 5.05 19.27 4.96 19.05 5.05L16.56 6.05C16.04 5.66 15.48 5.32 14.87 5.07L14.5 2.42C14.46 2.18 14.25 2 14 2H10C9.75 2 9.54 2.18 9.5 2.42L9.13 5.07C8.52 5.32 7.96 5.66 7.44 6.05L4.95 5.05C4.73 4.96 4.46 5.05 4.34 5.27L2.34 8.73C2.22 8.95 2.27 9.22 2.46 9.37L4.57 11.02C4.53 11.33 4.5 11.66 4.5 12C4.5 12.34 4.53 12.67 4.57 12.98L2.46 14.63C2.27 14.78 2.22 15.05 2.34 15.27L4.34 18.73C4.46 18.95 4.73 19.04 4.95 18.95L7.44 17.95C7.96 18.34 8.52 18.68 9.13 18.93L9.5 21.58C9.54 21.82 9.75 22 10 22H14C14.25 22 14.46 21.82 14.5 21.58L14.87 18.93C15.48 18.68 16.04 18.34 16.56 17.95L19.05 18.95C19.27 19.04 19.54 18.95 19.66 18.73L21.66 15.27C21.78 15.05 21.73 14.78 21.54 14.63L19.43 12.98Z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        НАСТРОЙКИ СЕРВЕРА
+                    </a>
+                </div>
+
+                <!-- Купить донат -->
+                <div class="fake-btn">
+                    <a href="https://gm-donate.net/donate/19198" class="link-btn" target="_blank" rel="noopener noreferrer">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="#67e8f9" stroke-width="2"></circle>
+                            <path d="M12 8v8" stroke="#67e8f9" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M8 12h8" stroke="#67e8f9" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                        КУПИТЬ ДОНАТ
+                    </a>
+                </div>
+
+                <!-- Новые кнопки (пока без названия) -->
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/chat_toggle_mode.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        ТИП ТЕКСТ ЧАТА
+                    </a>
+                </div>
+
+                <div class="fake-btn">
+                    <a href="https://stroiubivai.ucoz.net/cmd/voice_toggle_mode.html" class="link-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <line x1="12" y1="19" x2="12" y2="22" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                        </svg>
+                        ТИП ВОЙС ЧАТА
+                    </a>
+                </div>
+
+
+        <script>
+            function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+
+            const size = Math.random() * 8 + 6;
+            const leftPos = Math.random() * 100;
+            const duration = Math.random() * 20 + 16;
+
+            particle.style.setProperty('--size', size + 'px');
+            particle.style.setProperty('--left', leftPos + '%');
+            particle.style.setProperty('--duration', duration + 's');
+            particle.style.setProperty('--delay', (Math.random() * -duration) + 's');
+
+            document.getElementById('particles').appendChild(particle);
+
+            setTimeout(() => {
+            if (particle && particle.parentNode) particle.parentNode.removeChild(particle);
+            }, (duration + 2) * 1000);
+            }
+
+            function initParticles() {
+            for (let i = 0; i < 26; i++) {
+            setTimeout(createParticle, i * 90);
+            }
+            }
+
+            window.addEventListener('load', initParticles);
+            setInterval(createParticle, 650);
+        </script>
+
+    
+
+</div></div><img id="eurekaa_chatgpt_bard_sidebar" src="chrome-extension://aajjgdpofhhcjmjoombjdfepplndhgcp/images/snipp6.svg" draggable="true" title="Gemini [Alt + G]" fs="false"></body></html>
