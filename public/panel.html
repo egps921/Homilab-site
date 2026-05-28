@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomiLAB — Обращения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/cursor.css" />
+</head>
+<body>
+  <header class="head-bar">
+    <div class="head-bar__inner">
+      <a href="/" class="head-bar__brand scribble-title scribble-title--bar">
+        <span class="scribble-title__text">HomiLAB</span>
+        <svg class="scribble-title__wave" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2,7 Q28,2 55,6 T108,5 L118,6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="butt" stroke-linejoin="miter"/>
+        </svg>
+      </a>
+      <nav class="head-bar__nav">
+        <a href="/">Главная</a>
+        <a href="/loading.html">Загрузочный экран</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main--panel">
+    <section id="reports" class="section reports">
+      <h1 class="section__title reveal">Жалобы на администрацию</h1>
+      <p class="section__hint reveal">localhost · укажите ник админа и причину</p>
+
+      <form id="report-form" class="report-form reveal reveal--delay-1">
+        <div class="form-row">
+          <label for="reporter">Ваш ник</label>
+          <input type="text" id="reporter" name="reporter" placeholder="Необязательно" autocomplete="nickname" />
+        </div>
+        <div class="form-row">
+          <label for="adminName">Администратор <span class="req">*</span></label>
+          <input type="text" id="adminName" name="adminName" required placeholder="Steam / Discord ник" />
+        </div>
+        <div class="form-row form-row--full">
+          <label for="reason">Причина <span class="req">*</span></label>
+          <textarea id="reason" name="reason" required rows="4" placeholder="Опишите ситуацию…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Отправить</button>
+      </form>
+
+      <div id="reports-list" class="reports-list"></div>
+    </section>
+  </main>
+
+  <button type="button" id="chat-toggle" class="chat-fab" aria-label="Чат с поддержкой" title="Чат с админом">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+
+  <aside id="chat-panel" class="chat-panel" aria-hidden="true">
+    <header class="chat-panel__head">
+      <h3>Поддержка</h3>
+      <button type="button" id="chat-close" aria-label="Закрыть">&times;</button>
+    </header>
+    <div id="chat-messages" class="chat-panel__messages"></div>
+    <form id="chat-form" class="chat-panel__form">
+      <input type="text" id="chat-author" placeholder="Ваш ник" maxlength="32" />
+      <div class="chat-panel__input-row">
+        <input type="text" id="chat-input" placeholder="Сообщение…" required autocomplete="off" />
+        <button type="submit" aria-label="Отправить">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </form>
+  </aside>
+
+  <footer class="footer">
+    <p>HomiLAB · Все права защищены © 2026</p>
+  </footer>
+
+  <script src="/js/cursor.js"></script>
+  <script src="/js/panel.js"></script>
+</body>
+</html>

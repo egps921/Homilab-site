@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomiLAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,800;0,9..40,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/cursor.css" />
+</head>
+<body>
+  <header class="head-bar">
+    <div class="head-bar__inner">
+      <a href="/" class="head-bar__brand scribble-title scribble-title--bar">
+        <span class="scribble-title__text">HomiLAB</span>
+        <svg class="scribble-title__wave" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2,7 Q28,2 55,6 T108,5 L118,6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="butt" stroke-linejoin="miter"/>
+        </svg>
+      </a>
+      <nav class="head-bar__nav">
+        <a href="#server">О сервере</a>
+        <a href="#links">Ссылки</a>
+        <a href="/loading.html">Загрузочный экран</a>
+        <a href="/panel.html">Жалобы\поддержка</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-open" id="hero-gif-slot">
+    <div class="hero-open__media" aria-hidden="true">
+      <img src="/media/hero.gif" alt="" />
+    </div>
+    <div class="hero-open__glow" aria-hidden="true"></div>
+    <div class="hero-particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-open__head">
+      <h1 class="hero-open__title" aria-label="HomiLAB">
+        <span id="hero-title"></span>
+      </h1>
+      <div class="hero-open__desc-mask">
+        <p class="hero-open__desc">Гмод хомиград сервер</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <section id="server" class="server-block">
+      <h2 class="server-block__title scroll-reveal">О сервере HomiLAB</h2>
+      <div class="server-block__grid">
+        <article class="server-card scroll-reveal" style="--reveal-delay: 0.08s">
+          <h3>Что это</h3>
+          <p>Игровой проект в Garry's Mod на базе <strong>homigrad</strong> — minigame-режимы, своя атмосфера и постоянные обновления. Собираемся играть, тестить новое и строить комьюнити вокруг сервера.</p>
+        </article>
+        <article class="server-card scroll-reveal" style="--reveal-delay: 0.16s">
+          <h3>Режим</h3>
+          <p>Homigrad с акцентом на короткие раунды и разнообразие сценариев. Карты, роли и механики подстраиваются под живой онлайн — без «пустого» гринда.</p>
+        </article>
+        <article class="server-card scroll-reveal" style="--reveal-delay: 0.24s">
+          <h3>Вход и поддержка</h3>
+          <p>Подключение через GMod — при входе <a href="/loading.html">загрузочный экран</a> проекта. Жалобы и чат с админами — на <a href="/panel.html">странице обращений</a>, донат — Boosty в ссылках ниже.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="links" class="section links">
+      <h2 class="section__title scroll-reveal">Ссылки</h2>
+      <div class="links-stack links-reveal">
+        <a href="https://discord.gg/8mD5GzrX5y" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card__icon">
+            <img src="https://cdn.simpleicons.org/discord/5865F2" width="44" height="44" alt="" />
+          </span>
+          <span class="link-card__body">
+            <span class="link-card__badge">Discord</span>
+            <span class="link-card__label">Сервер сообщества</span>
+            <span class="link-card__desc">Чат, анонсы, помощь</span>
+          </span>
+        </a>
+        <a href="https://steamcommunity.com/id/Caspa4d/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card__icon">
+            <img src="https://cdn.simpleicons.org/steam/EDEDED" width="44" height="44" alt="" />
+          </span>
+          <span class="link-card__body">
+            <span class="link-card__badge">Steam</span>
+            <span class="link-card__label">Профиль автора</span>
+            <span class="link-card__desc">Caspa4d / abs0lute</span>
+          </span>
+        </a>
+        <a href="https://boosty.to/homilab" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card__icon">
+            <img src="https://cdn.simpleicons.org/boosty/F15F2C" width="44" height="44" alt="" />
+          </span>
+          <span class="link-card__body">
+            <span class="link-card__badge">Boosty</span>
+            <span class="link-card__label">Донат проекта</span>
+            <span class="link-card__desc">Подписки и бонусы</span>
+          </span>
+        </a>
+        <a href="https://steamcommunity.com/id/Davuksss/" target="_blank" rel="noopener" class="link-card">
+          <span class="link-card__icon">
+            <img src="https://cdn.simpleicons.org/steam/EDEDED" width="44" height="44" alt="" />
+          </span>
+          <span class="link-card__body">
+            <span class="link-card__badge">Dev</span>
+            <span class="link-card__label">Блог разработчика</span>
+            <span class="link-card__desc">Davuks</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>HomiLAB · Все права защищены © 2026</p>
+  </footer>
+
+  <script src="/js/cursor.js"></script>
+  <script src="/js/scroll-reveal.js"></script>
+  <script src="/js/hero.js"></script>
+</body>
+</html>

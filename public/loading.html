@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomiLAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/loading.css" />
+  <link rel="stylesheet" href="/css/cursor.css" />
+</head>
+<body class="gmod-load">
+  <div class="gmod-load__bg" id="load-bg">
+    <img src="/media/load-bg.gif" alt="" />
+  </div>
+  <div class="gmod-load__shade"></div>
+
+  <div class="gmod-load__title-block">
+    <h1 class="gmod-load__title">
+      Homi<span class="title-lab">LAB
+        <svg class="title-lab__wave" viewBox="0 0 80 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2,7 Q20,3 40,6 T78,5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="butt" stroke-linejoin="miter"/>
+        </svg>
+      </span>
+    </h1>
+    <p class="gmod-load__gamemode" id="load-gamemode">homigrad</p>
+  </div>
+
+  <div class="gmod-load__hud">
+    <p class="gmod-load__status" id="load-status">Загрузка…</p>
+    <div class="gmod-load__bar">
+      <div class="gmod-load__bar-fill" id="load-progress"></div>
+    </div>
+  </div>
+
+  <script src="/js/cursor.js"></script>
+  <script src="/js/loading.js"></script>
+</body>
+</html>

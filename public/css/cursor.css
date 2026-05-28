@@ -1,0 +1,44 @@
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor label {
+    cursor: none !important;
+  }
+
+  .site-cursor__img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(4px, 4px);
+    transition: transform 0.15s ease-out;
+    user-select: none;
+  }
+
+  html.cursor--hover .site-cursor__img {
+    transform: translate(4px, 4px) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-cursor__img {
+    display: none !important;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button {
+    cursor: auto !important;
+  }
+}
